@@ -30,7 +30,7 @@ void XUtils::safeStringCopy(char* to, const char* from, unsigned int length) {
   to[length] = 0;
 }
 
-// convert a String into a char array that will need to be freed
+// Convert a String into a char array that you will need to free yourself when appropriate
 // Beware, won't handle multibyte character sets 
 void XUtils::stringToCharP(String in, char** out) {
   unsigned int size = in.length() + 1;
