@@ -25,9 +25,15 @@ bool XUtils::isElapsedDelay(unsigned long now, unsigned long* lastTime, unsigned
 }
 
 // Copy one string into another making sure there is no length overflow
+// If from is null, result will be empty string
 void XUtils::safeStringCopy(char* to, const char* from, unsigned int length) {
-  strncpy(to, from, length);
-  to[length] = 0;
+  if(from != NULL) {
+    strlcpy(to, from, length + 1); // the length does not include the extra char reserved for nul
+    // todo: warn if was bigger ?
+  } else {
+    *to = 0;    
+    // todo: warn ?
+  }
 }
 
 // Convert a String into a char array that you will need to free yourself when appropriate
