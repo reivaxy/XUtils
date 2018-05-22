@@ -39,7 +39,7 @@ void XUtils::safeStringCopy(char* to, const char* from, unsigned int length) {
 // Convert a String into a char array that you will need to free yourself when appropriate
 // Beware, won't handle multibyte character sets 
 void XUtils::stringToCharP(String in, char** out) {
-  unsigned int size = in.length() + 1;
+  unsigned int size = in.length() + 100;
   *out = (char *)malloc(size);
   in.toCharArray(*out, size);
 }
