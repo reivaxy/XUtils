@@ -10,12 +10,12 @@
 bool XUtils::isElapsedDelay(unsigned long now, unsigned long* lastTime, unsigned long delay) {
   unsigned long elapsed = now - *lastTime;
   bool result = false;
-  // millis() overflows unsigned long after about 50 days => 0  but since unsigned,
+  // millis() overflows unsigned long after about 50 days => <0  but since unsigned,
   // no problem !
   if(elapsed >= delay){
     result = true;
   }
-  if(lastTime == 0) {
+  if(*lastTime == 0) {
     result = true;
   }
   if(result) {
