@@ -24,6 +24,13 @@ bool XUtils::isElapsedDelay(unsigned long now, unsigned long* lastTime, unsigned
   return result;
 }
 
+ char* XUtils::mallocAndCopy(const char* buf) {
+   int size = strlen(buf);
+   char* result = (char *)malloc(size + 1);
+   safeStringCopy(result, buf, size);
+   return result;
+ }
+
 // Copy one string into another making sure there is no length overflow
 // If from is null, result will be empty string
 void XUtils::safeStringCopy(char* to, const char* from, unsigned int length) {
